@@ -23,7 +23,7 @@ SRC_URI=""
 
 LICENSE="BSD-Google chrome_internal? ( Google-TOS )"
 SLOT="0"
-KEYWORDS="~*"
+KEYWORDS="*"
 IUSE="
 	afdo_use
 	+accessibility
