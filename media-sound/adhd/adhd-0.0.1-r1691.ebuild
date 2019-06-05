@@ -3,8 +3,8 @@
 # found in the LICENSE file.
 
 EAPI=4
-CROS_WORKON_COMMIT="9c4f89925ff9ce6fb419d48733564ecefd309802"
-CROS_WORKON_TREE="00a18b07f3ed08529769886e821f4978b627076c"
+CROS_WORKON_COMMIT="11ce45b54e73bc8e17f941be9e83828f8cedacc5"
+CROS_WORKON_TREE="040ed0ae3480b4010593456490bc1d980513553d"
 CROS_WORKON_PROJECT="chromiumos/third_party/adhd"
 CROS_WORKON_LOCALNAME="adhd"
 CROS_WORKON_USE_VCSID=1
@@ -38,7 +38,7 @@ CROS_BOARDS=(
 	strago
 	tidus
 	tricky
-	veyron_{fievel,jaq,jerry,mickey,mighty,minnie,speedy,tiger}
+	veyron_{fievel,jaq,jerry,mickey,mighty,minnie,minnie-kernelnext,speedy,tiger}
 	whirlwind
 	wolf
 	zako
