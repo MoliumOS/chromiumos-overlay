@@ -4,8 +4,8 @@
 
 EAPI=5
 
-CROS_WORKON_COMMIT="e5be2fdf9a26c380f5cce863592f9f8115f48884"
-CROS_WORKON_TREE="c926084f862f50d7e1a6995268a471b4bacff258"
+CROS_WORKON_COMMIT="219717c5fa78ca92e411c7ed27b7d6a29dcdd6e4"
+CROS_WORKON_TREE="8ac9524245c6f478bcc56d688f8c6ea9acf02063"
 CROS_WORKON_PROJECT="chromiumos/platform/ec"
 CROS_WORKON_LOCALNAME="ec"
 CROS_WORKON_DESTDIR="${S}/platform/ec"
@@ -18,10 +18,22 @@ HOMEPAGE="https://www.chromium.org/chromium-os/ec-development"
 LICENSE="BSD-Google"
 SLOT="0"
 KEYWORDS="*"
-IUSE="quiet verbose coreboot-sdk unibuild"
+IUSE="quiet verbose coreboot-sdk unibuild test"
+REQUIRED_USE="unibuild"
+
+RDEPEND="
+	test? (
+		dev-libs/openssl:=
+		dev-libs/protobuf:=
+	)
+"
 
 # EC build requires libftdi, but not used for runtime (b:129129436)
-DEPEND="dev-embedded/libftdi:1="
+DEPEND="
+	dev-embedded/libftdi:1=
+	chromeos-base/chromeos-config
+	test? ( dev-libs/libprotobuf-mutator:= )
+"
 
 src_unpack() {
 	cros-workon_src_unpack
@@ -66,10 +78,7 @@ src_compile() {
 src_test() {
 	set_build_env
 
-	local target
-	for target in "${ish_targets[@]}"; do
-		BOARD="${target}" emake "${EC_OPTS[@]}" tests
-	done
+	emake "${EC_OPTS[@]}" runhosttests
 }
 
 src_install() {
