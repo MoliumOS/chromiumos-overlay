@@ -175,6 +175,7 @@ CONFIG_FRAGMENTS=(
 	samsung_serial
 	selinux_develop
 	socketmon
+	swtpm
 	systemtap
 	tpm
 	transparent_hugepage
@@ -712,6 +713,11 @@ socketmon_config="
 CONFIG_INET_DIAG=y
 CONFIG_INET_TCP_DIAG=y
 CONFIG_INET_UDP_DIAG=y
+"
+
+swtpm_desc="Enable TPM Proxy for swTPM"
+swtpm_config="
+CONFIG_TCG_VTPM_PROXY=m
 "
 
 systemtap_desc="systemtap support"
