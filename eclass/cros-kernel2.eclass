@@ -179,6 +179,7 @@ CONFIG_FRAGMENTS=(
 	qmi
 	realtekpstor
 	recovery_ramfs
+	rtl8188ee
 	samsung_serial
 	selinux_develop
 	socketmon
@@ -715,6 +716,11 @@ CONFIG_USB_NET_QMI_WWAN=m
 realtekpstor_desc="Realtek PCI card reader"
 realtekpstor_config="
 CONFIG_RTS_PSTOR=m
+"
+
+rtl8188ee_desc="Enable RTL8188EE WiFi Driver"
+rtl8188ee_config="
+CONFIG_RTL8188EE=m
 "
 
 samsung_serial_desc="Samsung serialport"

@@ -93,6 +93,7 @@ IUSE_LINUX_FIRMWARE=(
 	rtl8153
 	rtl8168g-1
 	rtl8168g-2
+	rtl8188ee
 	rtl_bt-8822c
 	rtw8822c
 	venus-52
@@ -145,6 +146,7 @@ LICENSE="
 	linux_firmware_rtl8153? ( LICENCE.rtlwifi_firmware )
 	linux_firmware_rtl8168g-1? ( LICENCE.rtl_nic )
 	linux_firmware_rtl8168g-2? ( LICENCE.rtl_nic )
+	linux_firmware_rtl8188ee? ( no-source-code )
 	linux_firmware_rtl_bt-8822c? ( LICENCE.rtlwifi_firmware )
 	linux_firmware_rtw8822c? ( LICENCE.rtlwifi_firmware )
 	linux_firmware_venus-52? ( LICENSE.qcom )
@@ -247,6 +249,7 @@ src_install() {
 	use_fw rtl8153 && doins_subdir rtl_nic/{rtl8153a-2.fw,rtl8153a-4.fw,rtl8153b-2.fw}
 	use_fw rtl8168g-1 && doins_subdir rtl_nic/rtl8168g-1.fw
 	use_fw rtl8168g-2 && doins_subdir rtl_nic/rtl8168g-2.fw
+	use_fw rtl8188ee && doins_subdir rtlwifi/rtl8188efw.bin
 	use_fw rtl_bt-8822c && doins_subdir rtl_bt/rtl8822c*.bin
 	use_fw rtw8822c && doins_subdir rtw88/rtw8822c*.bin
 	use_fw venus-52 && doins_subdir qcom/venus-5.2/*
