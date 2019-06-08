@@ -9,7 +9,7 @@ HOMEPAGE="http://src.chromium.org"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="*"
-IUSE="cros_host internal"
+IUSE="cros_host"
 
 # List of font packages used in Chromium OS.  This list is separate
 # so that it can be shared between the host in
@@ -26,10 +26,8 @@ IUSE="cros_host internal"
 # The gcc-libs requirement is a similar situation.  Ultimately this comes down
 # to fixing http://crbug.com/205424.
 DEPEND="
-	internal? (
-		chromeos-base/monotype-fonts
-		chromeos-base/google-sans-fonts
-	)
+	chromeos-base/monotype-fonts
+	chromeos-base/google-sans-fonts
 	media-fonts/croscorefonts
 	media-fonts/crosextrafonts
 	media-fonts/crosextrafonts-carlito
