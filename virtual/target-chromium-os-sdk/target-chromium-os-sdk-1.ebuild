@@ -463,6 +463,12 @@ RDEPEND="${RDEPEND}
 	dev-util/unifdef
 	"
 
+# Host dependencies for the swTPM
+RDEPEND="${RDEPEND}
+	dev-libs/libtpms
+	sys-libs/libseccomp
+	"
+
 # Host dependencies for virtualbox-guest-additions
 RDEPEND="${RDEPEND}
 	dev-util/kbuild
