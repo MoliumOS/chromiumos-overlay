@@ -34,8 +34,8 @@ IUSE="
 	app_shell
 	asan
 	+authpolicy
-	+build_tests
-	+chrome_debug
+	build_tests
+	chrome_debug
 	+cfi
 	chrome_debug_tests
 	chrome_internal
@@ -327,7 +327,6 @@ set_build_args() {
 		BUILD_ARGS+=(
 			"arm_use_neon=$(usetf neon)"
 			# To workaround the 4GB debug limit. crbug.com/792999.
-			"blink_symbol_level=1"
 		)
 		BUILD_STRING_ARGS+=(
 			"target_cpu=arm"
@@ -431,7 +430,15 @@ set_build_args() {
 			# llvm and debug fission properly. crosbug.com/710605
 			append-flags -fno-split-dwarf-inlining
 		fi
-		BUILD_ARGS+=( "symbol_level=2" )
+		BUILD_ARGS+=(
+			blink_symbol_level=2
+			symbol_level=2
+		)
+	else
+		BUILD_ARGS+=(
+			blink_symbol_level=0
+			symbol_level=0
+		)
 	fi
 
 	# With ThinLTO, the linking landscape is very different than regular
