@@ -30,8 +30,8 @@ IUSE="
 	app_shell
 	asan
 	+authpolicy
-	+build_tests
-	+chrome_debug
+	build_tests
+	chrome_debug
 	+cfi
 	chrome_debug_tests
 	chrome_internal
@@ -47,7 +47,7 @@ IUSE="
 	goma
 	+highdpi
 	internal_gles_conform
-	jumbo
+	+jumbo
 	+libcxx
 	mojo
 	msan
@@ -377,8 +377,6 @@ set_build_args() {
 	arm)
 		BUILD_ARGS+=(
 			"arm_use_neon=$(usetf neon)"
-			# To workaround the 4GB debug limit. crbug.com/792999.
-			"blink_symbol_level=1"
 		)
 		BUILD_STRING_ARGS+=(
 			"target_cpu=arm"
@@ -499,7 +497,15 @@ set_build_args() {
 				append-flags -fno-split-dwarf-inlining
 			fi
 		fi
-		BUILD_ARGS+=( "symbol_level=2" )
+		BUILD_ARGS+=(
+			"blink_symbol_level=2"
+			"symbol_level=2"
+		)
+	else
+		BUILD_ARGS+=(
+			"blink_symbol_level=0"
+			"symbol_level=0"
+		)
 	fi
 }
 
