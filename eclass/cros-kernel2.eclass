@@ -717,7 +717,7 @@ CONFIG_INET_UDP_DIAG=y
 
 swtpm_desc="Enable TPM Proxy for swTPM"
 swtpm_config="
-CONFIG_TCG_VTPM_PROXY=m
+CONFIG_TCG_VTPM_PROXY=y
 "
 
 systemtap_desc="systemtap support"
