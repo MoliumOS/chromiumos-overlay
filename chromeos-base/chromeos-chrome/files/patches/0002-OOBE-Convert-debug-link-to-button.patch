@@ -1,0 +1,54 @@
+From 5bacc964041a9a732862b4e1e2eb2063b88a3337 Mon Sep 17 00:00:00 2001
+From: Adam Farden <adam@farden.cz>
+Date: Mon, 24 Jun 2019 10:44:01 +0200
+Subject: [PATCH 2/2] OOBE: Convert debug link to button
+
+On Chromium OS this link is always visible, so make it pretty.
+---
+ .../resources/chromeos/login/oobe_welcome_dialog.html  | 10 +++++-----
+ .../resources/chromeos/login/oobe_welcome_dialog.js    |  1 +
+ 2 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/chrome/browser/resources/chromeos/login/oobe_welcome_dialog.html b/chrome/browser/resources/chromeos/login/oobe_welcome_dialog.html
+index 66abc08328f2..dac32893f9c3 100644
+--- a/chrome/browser/resources/chromeos/login/oobe_welcome_dialog.html
++++ b/chrome/browser/resources/chromeos/login/oobe_welcome_dialog.html
+@@ -111,11 +111,6 @@
+             </video>
+           </if>
+         </div>
+-        <div hidden="[[!debuggingLinkVisible]]">
+-          <a href="#" on-tap="onDebuggingLinkClicked_" id="enableDebuggingLink">
+-            [[i18nDynamic(locale, 'debuggingFeaturesLink')]]
+-          </a>
+-        </div>
+         <div class="flex"></div>
+         <div id="buttons" class="layout horizontal center">
+           <oobe-welcome-secondary-button id="languageSelectionButton"
+@@ -140,6 +135,11 @@
+             <div>[[i18nDynamic(locale, 'timezoneButtonText')]]</div>
+           </oobe-welcome-secondary-button>
+           <div class="flex"></div>
++          <oobe-next-button id="enableDebuggingButton"
++              on-tap="onDebuggingLinkClicked_"
++              hidden="[[!debuggingLinkVisible]]">
++            <div>[[i18nDynamic(locale, 'debuggingFeaturesLink')]]</div>
++          </oobe-next-button>
+           <oobe-next-button id="welcomeNextButton"
+               inverse on-tap="onNextClicked_">
+             <div>[[i18nDynamic(locale, 'welcomeNextButtonText')]]</div>
+diff --git a/chrome/browser/resources/chromeos/login/oobe_welcome_dialog.js b/chrome/browser/resources/chromeos/login/oobe_welcome_dialog.js
+index 052f6a6c7820..27646bd4b34b 100644
+--- a/chrome/browser/resources/chromeos/login/oobe_welcome_dialog.js
++++ b/chrome/browser/resources/chromeos/login/oobe_welcome_dialog.js
+@@ -351,6 +351,7 @@
+     },
+ 
+     onDebuggingLinkClicked_: function() {
++      this.focusedElement_ = 'enableDebuggingButton';
+       this.fire('enable-debugging-clicked');
+     },
+ 
+-- 
+2.17.1
+
