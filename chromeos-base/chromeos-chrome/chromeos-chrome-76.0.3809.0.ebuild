@@ -230,7 +230,11 @@ DEPEND="${DEPEND}
 	arm? ( x11-libs/libdrm )
 "
 
-PATCHES=()
+PATCHES=(
+	${FILESDIR}/patches/0001-Partially-revert-ChromeOS-OOBE-Add-Welcome-screen-an.patch
+	${FILESDIR}/patches/0002-OOBE-Convert-debug-link-to-button.patch
+	${FILESDIR}/patches/0003-enable-widevine-and-set-its-version-string-to-undefi.patch
+)
 
 AUTOTEST_COMMON="src/chrome/test/chromeos/autotest/files"
 AUTOTEST_DEPS="${AUTOTEST_COMMON}/client/deps"
@@ -441,6 +445,7 @@ set_build_args() {
 		echo "Building Chromium with additional media codecs and containers."
 		BUILD_ARGS+=( proprietary_codecs=true )
 		BUILD_STRING_ARGS+=( ffmpeg_branding=ChromeOS )
+		BUILD_ARGS+=( enable_widevine=true )
 	fi
 
 	if use clang; then
@@ -768,6 +773,7 @@ src_prepare() {
 	# Apply patches for non-localsource builds.
 	if [[ "${CHROME_ORIGIN}" == "SERVER_SOURCE" && ${#PATCHES[@]} -gt 0 ]]; then
 		epatch "${PATCHES[@]}"
+		cp ${FILESDIR}/images/welcome_illustration_*.png ${CHROME_ROOT}/src/chrome/browser/resources/chromeos/login/images/
 	fi
 
 	local WHOAMI=$(whoami)

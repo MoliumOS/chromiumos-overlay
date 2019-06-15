@@ -1,0 +1,37 @@
+From 258ab225e22e9fbd7176a6ca22a9febbf06f7681 Mon Sep 17 00:00:00 2001
+From: Adam Farden <adam@farden.cz>
+Date: Sun, 14 Jul 2019 20:57:18 +0200
+Subject: [PATCH 3/3] enable widevine and set its version string to "undefined"
+
+---
+ chrome/common/chrome_content_client.cc          | 2 +-
+ third_party/widevine/cdm/widevine_cdm_version.h | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/chrome/common/chrome_content_client.cc b/chrome/common/chrome_content_client.cc
+index 1db1b55b6da0..fbba60c4a21e 100644
+--- a/chrome/common/chrome_content_client.cc
++++ b/chrome/common/chrome_content_client.cc
+@@ -97,7 +97,7 @@
+ // Registers Widevine CDM if Widevine is enabled, the Widevine CDM is
+ // bundled and not a component. When the Widevine CDM is a component, it is
+ // registered in widevine_cdm_component_installer.cc.
+-#if BUILDFLAG(BUNDLE_WIDEVINE_CDM) && !BUILDFLAG(ENABLE_WIDEVINE_CDM_COMPONENT)
++#if !BUILDFLAG(ENABLE_WIDEVINE_CDM_COMPONENT)
+ #define REGISTER_BUNDLED_WIDEVINE_CDM
+ #include "third_party/widevine/cdm/widevine_cdm_common.h"  // nogncheck
+ // TODO(crbug.com/663554): Needed for WIDEVINE_CDM_VERSION_STRING. Support
+diff --git a/third_party/widevine/cdm/widevine_cdm_version.h b/third_party/widevine/cdm/widevine_cdm_version.h
+index dd6efed02646..4d8b2b7d85f7 100644
+--- a/third_party/widevine/cdm/widevine_cdm_version.h
++++ b/third_party/widevine/cdm/widevine_cdm_version.h
+@@ -11,5 +11,6 @@
+ // If the Widevine CDM is available define the following:
+ //  - WIDEVINE_CDM_VERSION_STRING (with the version of the CDM that's available
+ //    as a string, e.g., "1.0.123.456").
++#define WIDEVINE_CDM_VERSION_STRING "undefined"
+ 
+ #endif  // WIDEVINE_CDM_VERSION_H_
+-- 
+2.20.1
+

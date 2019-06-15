@@ -1,0 +1,44 @@
+From 2bde0c78a0981acac7bcc6656c830debe96dd1ed Mon Sep 17 00:00:00 2001
+From: Adam Farden <adam@farden.cz>
+Date: Mon, 24 Jun 2019 08:13:29 +0200
+Subject: [PATCH 1/3] Partially revert "ChromeOS OOBE: Add Welcome screen
+ animations."
+
+Since the OOBE animations landed, Chromium OS has a boring OOBE experience.
+This is because the animations are exclusive to Chrome OS, no equivalents
+were provided for Chromium OS.
+
+This partial revert brings back the code to load static images for Chromium OS.
+
+Due to lack of binary patch support, the images are stored in the overlay.
+---
+ .../chromeos/login/oobe_welcome_dialog.html         | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/chrome/browser/resources/chromeos/login/oobe_welcome_dialog.html b/chrome/browser/resources/chromeos/login/oobe_welcome_dialog.html
+index 66abc08328f2..6163ce62b53f 100644
+--- a/chrome/browser/resources/chromeos/login/oobe_welcome_dialog.html
++++ b/chrome/browser/resources/chromeos/login/oobe_welcome_dialog.html
+@@ -110,6 +110,19 @@
+                 src="../../../internal/resources/chromeos/animations/oobe-welcome/tablet_loop_2x.webm">
+             </video>
+           </if>
++          <if expr="chromeos and not _google_chrome">
++            <div class="welcome-illustration" hidden="[[isInTabletMode]]">
++              <img srcset="images/welcome_illustration_1x.png 1x,
++                           images/welcome_illustration_2x.png 2x">
++            </div>
++            <div class="welcome-illustration" hidden="[[!isInTabletMode]]">
++              <img hidden="[[!isInPortraitMode]]"
++                  srcset="images/welcome_illustration_tablet_mode_portraight_1x.png 1x,
++                          images/welcome_illustration_tablet_mode_portraight_2x.png 2x">
++              <img hidden="[[isInPortraitMode]]"
++                  srcset="images/welcome_illustration_tablet_mode_1x.png 1x,
++                          images/welcome_illustration_tablet_mode_2x.png 2x">
++          </if>
+         </div>
+         <div hidden="[[!debuggingLinkVisible]]">
+           <a href="#" on-tap="onDebuggingLinkClicked_" id="enableDebuggingLink">
+-- 
+2.20.1
+
