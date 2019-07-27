@@ -1,0 +1,10 @@
+DEFINED_PHASES=-
+DEPEND=chromeos-base/policy-go-proto chromeos-base/system_api dev-go/cdp dev-go/cmp dev-go/crypto dev-go/dbus dev-go/golint dev-go/gopsutil dev-go/go-matroska dev-go/mdns dev-go/protobuf dev-go/selinux dev-go/subcommands dev-go/sync dev-go/yaml
+DESCRIPTION=Build-time dependencies of Tast binaries
+EAPI=6
+HOMEPAGE=https://chromium.googlesource.com/chromiumos/platform/tast/
+KEYWORDS=*
+LICENSE=BSD-Google
+RDEPEND=chromeos-base/policy-go-proto chromeos-base/system_api dev-go/cdp dev-go/cmp dev-go/crypto dev-go/dbus dev-go/golint dev-go/gopsutil dev-go/go-matroska dev-go/mdns dev-go/protobuf dev-go/selinux dev-go/subcommands dev-go/sync dev-go/yaml
+SLOT=0
+_md5_=b24953da7fa33ca58711d7c7b0ea8127

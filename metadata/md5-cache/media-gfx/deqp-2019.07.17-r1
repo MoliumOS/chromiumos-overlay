@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=virtual/opengles media-libs/minigbm media-libs/libpng vulkan? ( virtual/vulkan-icd ) x11-drivers/opengles-headers x11-libs/libX11 dev-util/ninja >=dev-util/cmake-2.8.12
+DESCRIPTION=drawElements Quality Program - an OpenGL ES testsuite
+EAPI=5
+HOMEPAGE=https://android.googlesource.com/platform/external/deqp
+IUSE=-vulkan
+KEYWORDS=*
+LICENSE=Apache-2.0
+RDEPEND=virtual/opengles media-libs/minigbm media-libs/libpng vulkan? ( virtual/vulkan-icd )
+SLOT=0
+SRC_URI=https://android.googlesource.com/platform/external/deqp/+archive/15f23671da856ef5a7375aa814888517dfa9bd7c.tar.gz -> deqp-15f23671da856ef5a7375aa814888517dfa9bd7c.tar.gz https://github.com/KhronosGroup/glslang/archive/6.2.2596.tar.gz -> glslang-6.2.2596.tar.gz https://github.com/KhronosGroup/SPIRV-Tools/archive/vulkan-1.1-rc1.tar.gz -> SPIRV-Tools-vulkan-1.1-rc1.tar.gz https://github.com/KhronosGroup/SPIRV-Headers/archive/vulkan-1.1-rc2.tar.gz -> SPIRV-Headers-vulkan-1.1-rc2.tar.gz
+_eclasses_=cmake-utils	625ac0250848368bad285a1d1de242cf	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	06133990e861be0fe60c2b428fd025d9	flag-o-matic	5d5921a298e95441da2f85be419894c0	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	9c197f17a0c674e03f7bc2b075110f3e	versionator	26ca8a8bd95d6a74122c08ba98a4ee72
+_md5_=54937057cdf7b16b4647578182d074de
