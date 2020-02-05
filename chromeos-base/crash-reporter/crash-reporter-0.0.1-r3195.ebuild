@@ -3,8 +3,8 @@
 
 EAPI=7
 
-CROS_WORKON_COMMIT="388009cab8aca7ef2eb6652c67fc175fa0cc3326"
-CROS_WORKON_TREE=("2ef18d1c42c7aee2c4bb4110359103045c055adf" "3334239fb2cc225e603788f31b86fe0d8e337d6b" "640c33c9991cd45edff3ff00efdee3e3670279f3" "e7dba8c91c1f3257c34d4a7ffff0ea2537aeb6bb")
+CROS_WORKON_COMMIT="ccdf10b22faf27a889ab75c67f6599fcef0042a3"
+CROS_WORKON_TREE=("2ef18d1c42c7aee2c4bb4110359103045c055adf" "01e07c1b26cb98e48eb165d81f7226bb06d2993a" "640c33c9991cd45edff3ff00efdee3e3670279f3" "e7dba8c91c1f3257c34d4a7ffff0ea2537aeb6bb")
 CROS_WORKON_INCREMENTAL_BUILD=1
 CROS_WORKON_LOCALNAME="platform2"
 CROS_WORKON_PROJECT="chromiumos/platform2"
@@ -30,6 +30,7 @@ COMMON_DEPEND="
 	dev-libs/libpcre:=
 	dev-libs/protobuf:=
 	dev-libs/re2:=
+	kvm_guest? ( net-libs/grpc:= )
 	net-misc/curl:=
 	sys-libs/zlib:=
 "
@@ -45,6 +46,7 @@ DEPEND="
 	chromeos-base/shill-client:=
 	chromeos-base/system_api:=[fuzzer?]
 	chromeos-base/vboot_reference:=
+	chromeos-base/vm_protos:=
 "
 
 src_configure() {
