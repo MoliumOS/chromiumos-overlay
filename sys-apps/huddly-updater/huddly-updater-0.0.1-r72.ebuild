@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-CROS_WORKON_COMMIT="5251a810f116bc17d8d62f4b3a7eda8c1392e236"
-CROS_WORKON_TREE="9a27c6124892667fc9d8df72437f24d877c697fd"
+CROS_WORKON_COMMIT="0756da7b251c5409068db640e0b0d7437bb74dbf"
+CROS_WORKON_TREE="116b579b8e2ff8cdd458cac6d998e285f7b8bf29"
 CROS_WORKON_PROJECT="chromiumos/third_party/huddly-updater"
 
 inherit cros-workon libchrome udev user
@@ -16,6 +16,7 @@ KEYWORDS="*"
 IUSE="test"
 
 COMMON_DEPEND="chromeos-base/libbrillo:=
+	chromeos-base/cfm-dfu-notification:=
 	dev-libs/msgpack:=
 	virtual/libusb:1
 	virtual/libudev:0=
