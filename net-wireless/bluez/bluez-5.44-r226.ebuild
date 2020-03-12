@@ -3,8 +3,8 @@
 # $Header: /var/cvsroot/gentoo-x86/net-wireless/bluez/bluez-4.99.ebuild,v 1.7 2012/04/15 16:53:41 maekke Exp $
 
 EAPI="5"
-CROS_WORKON_COMMIT="efa47d801b623a848614b3df1621cab52ea06e86"
-CROS_WORKON_TREE="994ff0f1a6f6ad4a93387ccfa87b946e5dcf0774"
+CROS_WORKON_COMMIT="ef06ab386501c97bf3b2cee6f62f2edb1ef3bd71"
+CROS_WORKON_TREE="9f7e4eb011504caf621e4345d0355b5c217c2de2"
 CROS_WORKON_PROJECT="chromiumos/third_party/bluez"
 
 inherit autotools multilib eutils systemd udev user libchrome cros-sanitizers cros-workon toolchain-funcs flag-o-matic
@@ -110,9 +110,10 @@ src_install() {
 	udev_dorules "${FILESDIR}/99-ps3-gamepad.rules"
 	udev_dorules "${FILESDIR}/99-bluetooth-quirks.rules"
 
-	# Install the common config file.
+	# Install the config files.
 	insinto "/etc/bluetooth"
 	doins "${S}"/src/main_common.conf
+	doins "${FILESDIR}/input.conf"
 
 	# We don't preserve /var/lib in images, so nuke anything we preseed.
 	rm -rf "${D}"/var/lib/bluetooth
