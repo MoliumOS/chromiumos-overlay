@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-CROS_WORKON_COMMIT="3c51d5fe1d3403da2bb7d73a8dedf710dfc70704"
-CROS_WORKON_TREE="3eb3bb04d5bb1a0ebb1785eb9f8a746185c44cfc"
+CROS_WORKON_COMMIT="fc54f4d85cbfc551bb2580bda5f3417973f1a95b"
+CROS_WORKON_TREE="2572af7a095caba6ccf2efc7cbff947c0aaeb9da"
 CROS_WORKON_LOCALNAME="xorg-conf"
 CROS_WORKON_PROJECT="chromiumos/platform/xorg-conf"
 CROS_WORKON_OUTOFTREE_BUILD=1
